@@ -4,8 +4,8 @@ const route = useRoute()
 const { data, error } = await useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}`, {
     pick: ['data'],
 })
-if (error) {
-    throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+if (error.value !== null) {
+    throw createError({ statusCode: error.value.statusCode, statusMessage: error.value.statusMessage })
 }
 
 useHead({

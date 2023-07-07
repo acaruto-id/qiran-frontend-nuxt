@@ -12,8 +12,8 @@ const { data, error } = await useFetch(`https://api.qiran.id/v1/invitation/${rou
         }
     },
 })
-if (error) {
-    throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+if (error.value !== null) {
+    throw createError({ statusCode: error.value.statusCode, statusMessage: error.value.statusMessage })
 }
 </script>
 
