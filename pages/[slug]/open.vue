@@ -3,8 +3,25 @@ const route = useRoute()
 useHead({
     title: `Undangan untuk ${route.query.name} - Qiran.id`,
 })
+
+const { data, error } = await useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}`, {
+    transform: ({ data }) => {
+        return {
+            title: data.title,
+            coverImage: data.coverImage,
+        }
+    },
+})
+if (error.value !== null) {
+    throw createError({ statusCode: error.value.statusCode, statusMessage: error.value.statusMessage })
+}
 </script>
 
 <template>
-    <TemplateNaturalOpen :name="route.query.name" :slug="route.params.slug" />
+    <TemplateNaturalOpen
+        :name="route.query.name"
+        :slug="route.params.slug"
+        :title="data.title"
+        :image="data.coverImage"
+    />
 </template>
