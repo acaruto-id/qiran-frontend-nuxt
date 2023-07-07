@@ -1,4 +1,10 @@
 <script setup>
+const route = useRoute()
+
+const { data } = useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}`, {
+    pick: ['data'],
+})
+
 useHead({
     title: 'Wedding Invitation - Qiran.id',
 })
@@ -10,5 +16,5 @@ onMounted(() => {
 </script>
 
 <template>
-    <TemplateNatural />
+    <TemplateNatural :data="data.data" />
 </template>
