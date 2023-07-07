@@ -30,12 +30,14 @@ onBeforeUnmount(() => {
 <template>
     <TemplateWrapper color="bg-sage-700">
         <div class="bg-scotch text-sage">
-            <section class="relative h-screen">
-                <img src="/images/landing-image.png" alt="Landing image" class="absolute h-full w-full object-cover" />
+            <section
+                class="relative h-screen bg-cover bg-center"
+                :style="{ backgroundImage: 'url(' + data.landingImage + ')' }"
+            >
                 <div class="text-center text-xl text-sage-700">
                     <p class="pb-12 pt-20 drop-shadow-lg">The wedding of</p>
                     <h1 class="pb-12 font-monte text-5xl drop-shadow-lg">
-                        {{ data.maleBride.name.split(' ')[0] }} & {{ data.femaleBride.name.split(' ')[0] }}
+                        {{ data.title }}
                     </h1>
                     <p class="pb-12 drop-shadow-lg">{{ getDay(data.startDate) }}</p>
                 </div>

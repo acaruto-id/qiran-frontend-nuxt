@@ -1,6 +1,10 @@
 import { PropType } from '.nuxt/imports'
 
 interface Invitation {
+    title: string
+    slug: string
+    coverImage: string
+    landingImage: string
     quote: {
         content: string
         verse?: string
@@ -19,35 +23,35 @@ interface Invitation {
         father?: string
         mother?: string
     }
-    stories: Array<{
+    stories: {
         title: string
         image?: string
         content: string
-        _id: string
-    }>
-    gallery: Array<{
+        _id?: string
+    }[]
+    gallery: {
         url: string
-        _id: string
-    }>
-    timelines: Array<{
+        _id?: string
+    }[]
+    timelines: {
         title: string
         date: Date
         location?: string
         url?: string
-        _id: string
-    }>
-    specialGuests: Array<{
+        _id?: string
+    }[]
+    specialGuests: {
         name: string
-        _id: string
-    }>
+        _id?: string
+    }[]
     music?: string
-    wishes: Array<{
+    wishes: {
         name: string
         address?: string
         wish: string
-        _id: string
-    }>
-    _id: string
+        _id?: string
+    }[]
+    _id?: string
 }
 
 export type InvitationProps = PropType<Invitation>

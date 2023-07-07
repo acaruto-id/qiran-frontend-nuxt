@@ -8,18 +8,22 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    title: {
+        type: String,
+        required: true,
+    },
+    image: {
+        type: String,
+        required: true,
+    },
 })
 </script>
 
 <template>
     <TemplateWrapper color="bg-sage-700">
         <div class="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black text-center text-white">
-            <img
-                src="/images/template-cover.png"
-                alt="Template Cover"
-                class="absolute inset-0 -z-10 h-full w-full object-cover brightness-50"
-            />
-            <h1 class="pb-20 font-monte text-5xl">Qolandar & Intan</h1>
+            <img :src="image" alt="Cover" class="absolute inset-0 -z-10 h-full w-full object-cover brightness-50" />
+            <h1 class="pb-20 font-monte text-5xl">{{ title }}</h1>
             <h2 class="pb-12 text-xl">
                 Kepada Yth. <br />
                 Bapak/Ibu/Saudara/i
