@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { InvitationProps } from '@/types/invitation'
 
-const props = defineProps({
+defineProps({
     data: {
         type: Object as InvitationProps,
         required: true,
@@ -100,18 +100,16 @@ onBeforeUnmount(() => {
                 <img src="/images/flower-2.png" alt="Flower" class="w-20" />
             </section>
 
-            <section
-                v-motion-slide-visible-once-bottom
-                class="grid grid-cols-2 grid-rows-3 gap-x-3 gap-y-7 px-4 pb-16 text-xs"
-            >
+            <section class="grid grid-cols-2 grid-rows-3 gap-x-3 gap-y-7 px-4 pb-16 text-xs">
                 <template v-for="(story, index) in data.stories" :key="story._id">
                     <img
                         v-if="index % 2 === 0"
+                        v-motion-slide-visible-once-bottom
                         :src="story.image"
                         alt="photo1"
                         class="aspect-image w-full rounded-xl object-cover"
                     />
-                    <div class="text-justify">
+                    <div v-motion-slide-visible-once-bottom class="text-justify">
                         <h2 class="text-md mb-3 text-center font-semibold">{{ story.title }}</h2>
                         <p class="leading-4">
                             {{ story.content }}
@@ -119,6 +117,7 @@ onBeforeUnmount(() => {
                     </div>
                     <img
                         v-if="index % 2 !== 0"
+                        v-motion-slide-visible-once-bottom
                         :src="story.image"
                         alt="photo1"
                         class="aspect-image w-full rounded-xl object-cover"
@@ -132,6 +131,7 @@ onBeforeUnmount(() => {
 
             <section class="px-4 pb-16">
                 <div
+                    v-motion-slide-visible-once-bottom
                     class="mb-3 aspect-image w-full rounded-lg bg-cover bg-center transition-all"
                     :style="{ backgroundImage: 'url(' + data.gallery[middleGallery].url + ')' }"
                 />
@@ -195,6 +195,7 @@ onBeforeUnmount(() => {
                     </div>
                 </div>
                 <p>{{ getDay(data.startDate) }}</p>
+                <p>at {{ getTime(data.startDate) }}</p>
             </section>
 
             <section

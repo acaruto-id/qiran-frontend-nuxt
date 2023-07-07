@@ -1,7 +1,7 @@
 <script setup>
 const route = useRoute()
 
-const { data } = useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}`, {
+const { data } = await useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}`, {
     pick: ['data'],
 })
 
@@ -16,5 +16,5 @@ onMounted(() => {
 </script>
 
 <template>
-    <TemplateNatural :data="data.data" />
+    <TemplateNatural v-if="data" :data="data.data" />
 </template>
