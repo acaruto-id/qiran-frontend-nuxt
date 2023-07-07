@@ -4,7 +4,7 @@ useHead({
     title: `Undangan untuk ${route.query.name} - Qiran.id`,
 })
 
-const { data } = await useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}`, {
+const { data, error } = await useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}`, {
     transform: ({ data }) => {
         return {
             title: data.title,
@@ -12,6 +12,9 @@ const { data } = await useFetch(`https://api.qiran.id/v1/invitation/${route.para
         }
     },
 })
+if (error) {
+    throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
 </script>
 
 <template>

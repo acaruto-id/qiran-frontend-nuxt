@@ -1,9 +1,12 @@
 <script setup>
 const route = useRoute()
 
-const { data } = await useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}`, {
+const { data, error } = await useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}`, {
     pick: ['data'],
 })
+if (error) {
+    throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
 
 useHead({
     title: 'Wedding Invitation - Qiran.id',
