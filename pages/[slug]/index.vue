@@ -11,13 +11,11 @@ if (error.value !== null) {
 useHead({
     title: 'Wedding Invitation - Qiran.id',
 })
-onMounted(() => {
-    const URL = 'https://res.cloudinary.com/dk8so2dgw/video/upload/v1686580761/sample/n7oiqea4clgquovgnzhz.mp3'
-    const audio = new Audio(URL)
-    audio.play()
-})
 </script>
 
 <template>
-    <TemplateNatural v-if="data" :data="data.data" />
+    <div>
+        <TemplateNaturalOpen :name="route.query.name" :title="data.data.title" :image="data.data.coverImage" />
+        <TemplateNatural v-if="data" :data="data.data" />
+    </div>
 </template>
