@@ -9,8 +9,8 @@ interface Invitation {
         content: string
         verse?: string
     }
-    startDate: Date
-    endDate?: Date
+    startDate: string
+    endDate?: string
     maleBride: {
         name: string
         image?: string
@@ -35,7 +35,7 @@ interface Invitation {
     }[]
     timelines: {
         title: string
-        date: Date
+        date: string
         location?: string
         url?: string
         _id?: string
