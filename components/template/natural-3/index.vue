@@ -118,7 +118,7 @@ const submitWish = async () => {
                     >
                         {{ data.femaleBride.name }}
                     </p>
-                    <p v-motion="fadeToRight" class="text-right font-medium">Daughter of</p>
+                    <p v-motion="fadeToRight" class="text-right font-medium">Putri dari</p>
                     <p v-if="data.femaleBride.father" v-motion="fadeToRight" class="font-sm text-right font-light">
                         {{ data.femaleBride.father }}
                         <span v-if="data.femaleBride.mother">&</span>
@@ -217,7 +217,7 @@ const submitWish = async () => {
             </template>
 
             <section v-motion="fadeToBottom" class="pb-16 text-center font-ptserif text-3xl font-medium">
-                <h2>The Event Will Be Held</h2>
+                <h2>Acara akan diselenggarakan pada</h2>
             </section>
 
             <section v-motion="fadeToLeft" class="px-10 pb-16 text-center">
@@ -225,27 +225,27 @@ const submitWish = async () => {
                     <div class="mb-16 flex items-center justify-between font-medium">
                         <div>
                             <h3 class="text-3xl">{{ getCountdown(data.startDate, 'day') }}</h3>
-                            <h3>Day</h3>
+                            <h3>Hari</h3>
                         </div>
                         <p class="font-bold">:</p>
                         <div>
                             <h3 class="text-3xl">{{ getCountdown(data.startDate, 'hour') }}</h3>
-                            <h3>Hours</h3>
+                            <h3>Jam</h3>
                         </div>
                         <p class="font-bold">:</p>
                         <div>
                             <h3 class="text-3xl">{{ getCountdown(data.startDate, 'minute') }}</h3>
-                            <h3>Minutes</h3>
+                            <h3>Menit</h3>
                         </div>
                         <p class="font-bold">:</p>
                         <div>
                             <h3 class="text-3xl">{{ getCountdown(data.startDate, 'second') }}</h3>
-                            <h3>Seconds</h3>
+                            <h3>Detik</h3>
                         </div>
                     </div>
                 </div>
                 <p v-motion="fadeToTop">{{ getDay(data.startDate) }}</p>
-                <p v-motion="fadeToTop">at {{ getTime(data.startDate) }}</p>
+                <p v-motion="fadeToTop">{{ getTime(data.startDate) }}</p>
             </section>
 
             <section
