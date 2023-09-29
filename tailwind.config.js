@@ -19,6 +19,7 @@ module.exports = {
                 '"Noto Color Emoji"',
             ],
             monte: ['"MonteCarlo"', '"Brush Script MT"', '"Brush Script Std"', 'cursive'],
+            ptserif: ['"PT Serif"', 'serif'],
         },
         extend: {
             aspectRatio: {
@@ -55,6 +56,20 @@ module.exports = {
                     700: '#8C6F00',
                     800: '#544200',
                     900: '#1C1600',
+                    950: '#000000',
+                },
+                mineshaft: {
+                    DEFAULT: '#313131',
+                    50: '#8D8D8D',
+                    100: '#838383',
+                    200: '#6E6E6E',
+                    300: '#5A5A5A',
+                    400: '#454545',
+                    500: '#313131',
+                    600: '#151515',
+                    700: '#000000',
+                    800: '#000000',
+                    900: '#000000',
                     950: '#000000',
                 },
             },

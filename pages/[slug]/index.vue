@@ -15,7 +15,7 @@ useHead({
 
 <template>
     <div>
-        <TemplateNaturalOpen :name="route.query.name" :title="data.data.title" :image="data.data.coverImage" />
-        <TemplateNatural v-if="data" :data="data.data" />
+        <TemplateNatural3Open :name="route.query.name" :title="data.data.title" :image="data.data.coverImage" />
+        <TemplateNatural3 v-if="data" :data="data.data" />
     </div>
 </template>
