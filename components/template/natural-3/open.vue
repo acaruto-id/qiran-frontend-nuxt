@@ -23,7 +23,7 @@ onBeforeMount(() => {
 })
 
 function open() {
-    const URL = 'https://res.cloudinary.com/dk8so2dgw/video/upload/v1686580761/sample/n7oiqea4clgquovgnzhz.mp3'
+    const URL = 'https://res.cloudinary.com/doz4jm0wg/video/upload/v1695993309/wiwid-ulfi/uzpy4p9htwlyuoohn6by.mp4'
     const audio = new Audio(URL)
     audio.play().then(() => {
         window.scrollTo(0, 0)

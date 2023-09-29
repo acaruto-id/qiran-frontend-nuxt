@@ -9,6 +9,7 @@ const props = defineProps({
     },
 })
 
+const route = useRoute()
 const storyIndex = ref(0)
 const currentStory = computed(
     () => ((storyIndex.value % props.data.stories.length) + props.data.stories.length) % props.data.stories.length
@@ -39,6 +40,23 @@ onMounted(() => {
 onBeforeUnmount(() => {
     clearInterval(interval)
 })
+
+const formData = {
+    name: '',
+    address: '',
+    wish: '',
+}
+
+const submitWish = async () => {
+    const { data } = await useFetch(`https://api.qiran.id/v1/invitation/${route.params.slug}/wish`, {
+        method: 'POST',
+        body: {
+            name: formData.name,
+            address: formData.address,
+            wish: formData.wish,
+        },
+    })
+}
 </script>
 
 <template>
@@ -49,7 +67,7 @@ onBeforeUnmount(() => {
                 :style="{ backgroundImage: 'url(' + data.landingImage + ')' }"
             >
                 <div class="text-center text-xl text-white">
-                    <p class="pb-12 pt-20 drop-shadow-lg">Wedding of</p>
+                    <p class="pb-12 pt-20 drop-shadow-lg">Pernikahan</p>
                     <h1 class="pb-12 font-ptserif text-3xl drop-shadow-lg">
                         {{ data.title }}
                     </h1>
@@ -67,11 +85,11 @@ onBeforeUnmount(() => {
 
             <section v-motion="fade" class="px-4 pb-16">
                 <div class="relative flex items-center justify-center text-xl">
-                    <p class="z-10 px-px text-center text-2xl font-medium text-[#313131]">Future Bride and Groom</p>
+                    <p class="z-10 px-px text-center text-2xl font-medium text-[#313131]">Calon Pengantin</p>
                 </div>
             </section>
 
-            <section class="flex items-center px-3 pb-8">
+            <section class="flex items-center justify-center px-3 pb-8">
                 <div
                     v-motion="fadeToRight"
                     :style="{ backgroundImage: 'url(' + data.maleBride.image + ')' }"
@@ -81,18 +99,18 @@ onBeforeUnmount(() => {
                     <p v-motion="fadeToLeft" class="mb-2 border-b border-[#313131] pb-2 text-xl font-medium">
                         {{ data.maleBride.name }}
                     </p>
-                    <p v-motion="fadeToLeft" class="font-medium">Son of</p>
+                    <p v-motion="fadeToLeft" class="font-medium">Putra dari</p>
                     <p v-if="data.maleBride.father" v-motion="fadeToLeft" class="font-sm font-light">
-                        Mr. {{ data.maleBride.father }}
+                        {{ data.maleBride.father }}
                         <span v-if="data.maleBride.mother">&</span>
                     </p>
                     <p v-if="data.maleBride.mother" v-motion="fadeToLeft" class="font-sm font-light">
-                        Mrs. {{ data.maleBride.mother }}
+                        {{ data.maleBride.mother }}
                     </p>
                 </div>
             </section>
 
-            <section class="flex items-center px-3 pb-16">
+            <section class="flex items-center justify-center px-3 pb-16">
                 <div class="mr-4">
                     <p
                         v-motion="fadeToRight"
@@ -102,11 +120,11 @@ onBeforeUnmount(() => {
                     </p>
                     <p v-motion="fadeToRight" class="text-right font-medium">Daughter of</p>
                     <p v-if="data.femaleBride.father" v-motion="fadeToRight" class="font-sm text-right font-light">
-                        Mr. {{ data.femaleBride.father }}
+                        {{ data.femaleBride.father }}
                         <span v-if="data.femaleBride.mother">&</span>
                     </p>
                     <p v-if="data.femaleBride.mother" v-motion="fadeToRight" class="font-sm text-right font-light">
-                        Mrs. {{ data.femaleBride.mother }}
+                        {{ data.femaleBride.mother }}
                     </p>
                 </div>
                 <div
@@ -235,9 +253,8 @@ onBeforeUnmount(() => {
                 class="mx-8 mb-16 rounded-lg bg-[#313131] p-8 text-center text-sm text-scotch"
             >
                 <p class="mb-5">
-                    <b>{{ data.wishes.length }} guests</b> response will join, let's send your response too.
+                    <b>{{ data.wishes.length }} tamu</b> memberikan harapan, ayo kirimkan harapanmu juga!
                 </p>
-                <button class="w-full rounded-full border-0 bg-sky-400 py-3">Reservasi (RSVP)</button>
             </section>
 
             <section class="px-4 pb-10">
@@ -248,14 +265,14 @@ onBeforeUnmount(() => {
                             <FontAwesomeIcon icon="fa-regular fa-calendar" /> {{ getDay(timeline.date) }}
                         </p>
                         <p class="mb-1">
-                            <FontAwesomeIcon icon="fa-regular fa-clock" /> {{ getTime(timeline.date) }} - finish
+                            <FontAwesomeIcon icon="fa-regular fa-clock" /> {{ getTime(timeline.date) }} - selesai
                         </p>
                         <p v-if="timeline.location" class="mb-4">
                             <FontAwesomeIcon icon="fa-solid fa-location-dot" /> {{ timeline.location }}
                         </p>
                         <a v-if="timeline.url" :href="timeline.url" target="_blank">
                             <button class="rounded-full border border-sage px-6 py-2">
-                                <FontAwesomeIcon icon="fa-solid fa-location-dot" /> See location
+                                <FontAwesomeIcon icon="fa-solid fa-location-dot" /> Lihat lokasi
                             </button>
                         </a>
                     </div>
@@ -265,27 +282,27 @@ onBeforeUnmount(() => {
                             <FontAwesomeIcon icon="fa-regular fa-calendar" /> {{ getDay(timeline.date) }}
                         </p>
                         <p class="mb-1">
-                            <FontAwesomeIcon icon="fa-regular fa-clock" /> {{ getTime(timeline.date) }} - finish
+                            <FontAwesomeIcon icon="fa-regular fa-clock" /> {{ getTime(timeline.date) }} - selesai
                         </p>
                         <p v-if="timeline.location" class="mb-4">
                             <FontAwesomeIcon icon="fa-solid fa-location-dot" /> {{ timeline.location }}
                         </p>
                         <a v-if="timeline.url" :href="timeline.url" target="_blank">
                             <button class="rounded-full border border-sage px-6 py-2">
-                                <FontAwesomeIcon icon="fa-solid fa-location-dot" /> See location
+                                <FontAwesomeIcon icon="fa-solid fa-location-dot" /> Lihat lokasi
                             </button>
                         </a>
                     </div>
                 </div>
             </section>
 
-            <section v-motion="fadeToTop" class="px-4 pb-16 text-center text-sm">
-                <p class="mb-4">
-                    It is an honor and happiness for us if, Mr / Mrs / Brother / i can attend our wedding celebration.
-                    Looking forward to celebrate with you. Thank you.
+            <section class="px-4 pb-16 text-center text-sm">
+                <p v-motion="fadeToTop" class="mb-4">
+                    Adalah sebuah kehormatan dan kebanggan bagi kami apabila Bapak/Ibu/Saudara/i dapat hadir dalam acara
+                    pernikahan kami. Nantikan kebersamaan kita. Terima kasih.
                 </p>
                 <template v-if="data.specialGuests.length > 0">
-                    <p class="font-medium">also invited:</p>
+                    <p class="font-medium">turut mengundang:</p>
                     <ul>
                         <li v-for="guest in data.specialGuests" :key="guest._id">{{ guest.name }}</li>
                     </ul>
@@ -293,13 +310,18 @@ onBeforeUnmount(() => {
             </section>
 
             <section v-motion="fade" class="pb-5 text-center font-ptserif text-3xl font-medium">
-                <h2 class="font-3xl font-medium">Send a Wish</h2>
+                <h2 class="font-3xl font-medium">Kirim harapan</h2>
             </section>
 
             <section
                 v-motion="fade"
                 class="mx-4 mb-8 h-96 overflow-y-scroll rounded-xl bg-gray-300 px-4 py-6 shadow-inner"
             >
+                <template v-if="data.wishes.length < 1">
+                    <div class="h-full text-center font-monte text-4xl text-[#313131]">
+                        Belum ada harapan dari orang-orang, jadilah orang pertama yang mengirim harapan!
+                    </div>
+                </template>
                 <div
                     v-for="wish in data.wishes"
                     :key="wish.name"
@@ -327,22 +349,29 @@ onBeforeUnmount(() => {
 
             <section v-motion="fade" class="mx-4 mb-16 rounded-lg bg-[#f1eee2] p-6 shadow-3xl">
                 <h2 class="mb-3 font-medium text-[#313131]">Send a wish</h2>
-                <form action="#" class="text-center text-sm">
+                <form class="text-center text-sm" @submit.prevent="submitWish">
                     <input
+                        v-model="formData.name"
                         type="text"
                         placeholder="Name"
                         class="mb-4 w-full rounded-md border border-[#81787e] bg-transparent p-2 placeholder-[#948b8f]"
+                        required
                     />
                     <input
+                        v-model="formData.address"
                         type="text"
                         placeholder="Address"
                         class="mb-4 w-full rounded-md border border-[#81787e] bg-transparent p-2 placeholder-[#948b8f]"
                     />
                     <textarea
+                        v-model="formData.wish"
                         placeholder="Your wish"
                         class="mb-4 w-full rounded-md border border-[#81787e] bg-transparent p-2 placeholder-[#948b8f]"
+                        required
                     />
-                    <button class="rounded-full border-none bg-[#313131] px-6 py-2 text-scotch">Submit</button>
+                    <button type="submit" class="rounded-full border-none bg-[#313131] px-6 py-2 text-scotch">
+                        Submit
+                    </button>
                 </form>
             </section>
 
