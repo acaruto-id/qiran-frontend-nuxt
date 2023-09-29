@@ -9,8 +9,19 @@ import {
     faPlay,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faArrowLeft, faArrowRight, faCalendar, faClock, faLocationDot, faPlay, faChevronLeft, faChevronRight)
+library.add(
+    faInstagram,
+    faArrowLeft,
+    faArrowRight,
+    faCalendar,
+    faClock,
+    faLocationDot,
+    faPlay,
+    faChevronLeft,
+    faChevronRight
+)
 
 config.autoAddCss = false
 

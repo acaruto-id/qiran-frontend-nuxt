@@ -1,6 +1,6 @@
 export const fadeToTop = {
     initial: {
-        scale: 0.3,
+        scale: 0.6,
         opacity: 0,
         y: 100,
     },
@@ -9,14 +9,14 @@ export const fadeToTop = {
         opacity: 1,
         y: 0,
         transition: {
-            duration: 1000,
+            duration: 1500,
         },
     },
 }
 
 export const fadeToBottom = {
     initial: {
-        scale: 0.3,
+        scale: 0.6,
         opacity: 0,
         y: -100,
     },
@@ -25,7 +25,7 @@ export const fadeToBottom = {
         opacity: 1,
         y: 0,
         transition: {
-            duration: 1000,
+            duration: 1500,
         },
     },
 }
@@ -39,7 +39,7 @@ export const fadeToLeft = {
         opacity: 1,
         x: 0,
         transition: {
-            duration: 1000,
+            duration: 1500,
         },
     },
 }
@@ -53,21 +53,21 @@ export const fadeToRight = {
         opacity: 1,
         x: 0,
         transition: {
-            duration: 1000,
+            duration: 1500,
         },
     },
 }
 
 export const fade = {
     initial: {
-        scale: 0.6,
+        scale: 0.3,
         opacity: 0,
     },
     visibleOnce: {
         scale: 1,
         opacity: 1,
         transition: {
-            duration: 1000,
+            duration: 1500,
         },
     },
 }
