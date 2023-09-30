@@ -56,7 +56,20 @@ const submitWish = async () => {
             wish: formData.wish,
         },
     })
+
+    if (!data) return alert('Gagal mengirimkan harapan, silahkan coba lagi')
+
+    wishes.value.push({
+        name: formData.name,
+        address: formData.address,
+        wish: formData.wish,
+    })
+    formData.name = ''
+    formData.address = ''
+    formData.wish = ''
 }
+
+const wishes = ref(props.data.wishes)
 </script>
 
 <template>
@@ -317,13 +330,13 @@ const submitWish = async () => {
                 v-motion="fade"
                 class="mx-4 mb-8 h-96 overflow-y-scroll rounded-xl bg-gray-300 px-4 py-6 shadow-inner"
             >
-                <template v-if="data.wishes.length < 1">
+                <template v-if="wishes.length < 1">
                     <div class="h-full text-center font-monte text-4xl text-[#313131]">
                         Belum ada harapan dari orang-orang, jadilah orang pertama yang mengirim harapan!
                     </div>
                 </template>
                 <div
-                    v-for="wish in data.wishes"
+                    v-for="wish in wishes"
                     :key="wish.name"
                     v-motion="fadeToRight"
                     class="mb-4 flex gap-5 text-xs font-medium"
