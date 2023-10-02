@@ -229,8 +229,8 @@ const wishes = ref(props.data.wishes)
                 </section>
             </template>
 
-            <section v-motion="fadeToBottom" class="pb-16 text-center font-ptserif text-3xl font-medium">
-                <h2>Acara akan diselenggarakan pada</h2>
+            <section v-motion="fadeToBottom" class="px-5 pb-16 text-center font-ptserif text-3xl font-medium">
+                <h2>Acara diselenggarakan pada</h2>
             </section>
 
             <section v-motion="fadeToLeft" class="px-10 pb-16 text-center">
@@ -258,7 +258,7 @@ const wishes = ref(props.data.wishes)
                     </div>
                 </div>
                 <p v-motion="fadeToTop">{{ getDay(data.startDate) }}</p>
-                <p v-motion="fadeToTop">{{ getTime(data.startDate) }}</p>
+                <p v-motion="fadeToTop">Pukul {{ getTime(data.startDate) }}</p>
             </section>
 
             <section
@@ -361,24 +361,24 @@ const wishes = ref(props.data.wishes)
             </section>
 
             <section v-motion="fade" class="mx-4 mb-16 rounded-lg bg-[#f1eee2] p-6 shadow-3xl">
-                <h2 class="mb-3 font-medium text-[#313131]">Send a wish</h2>
+                <h2 class="mb-3 font-medium text-[#313131]">Kirim harapan</h2>
                 <form class="text-center text-sm" @submit.prevent="submitWish">
                     <input
                         v-model="formData.name"
                         type="text"
-                        placeholder="Name"
+                        placeholder="Nama"
                         class="mb-4 w-full rounded-md border border-[#81787e] bg-transparent p-2 placeholder-[#948b8f]"
                         required
                     />
                     <input
                         v-model="formData.address"
                         type="text"
-                        placeholder="Address"
+                        placeholder="Alamat"
                         class="mb-4 w-full rounded-md border border-[#81787e] bg-transparent p-2 placeholder-[#948b8f]"
                     />
                     <textarea
                         v-model="formData.wish"
-                        placeholder="Your wish"
+                        placeholder="Harapanmu"
                         class="mb-4 w-full rounded-md border border-[#81787e] bg-transparent p-2 placeholder-[#948b8f]"
                         required
                     />

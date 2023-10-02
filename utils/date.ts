@@ -2,7 +2,7 @@ type TimeType = 'day' | 'hour' | 'minute' | 'second'
 
 export const getDay = (data: string) => {
     const date = new Date(data)
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('id-ID', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -12,7 +12,7 @@ export const getDay = (data: string) => {
 
 export const getTime = (data: string) => {
     const date = new Date(data)
-    return date.toLocaleTimeString('en-US', {
+    return date.toLocaleTimeString('id-ID', {
         hour: '2-digit',
         minute: '2-digit',
     })
