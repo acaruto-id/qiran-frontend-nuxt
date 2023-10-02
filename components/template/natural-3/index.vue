@@ -229,7 +229,7 @@ const wishes = ref(props.data.wishes)
                 </section>
             </template>
 
-            <section v-motion="fadeToBottom" class="px-5 pb-16 text-center font-ptserif text-3xl font-medium">
+            <section v-motion="fadeToBottom" class="px-5 px-5 pb-16 text-center font-ptserif text-3xl font-medium">
                 <h2>Acara diselenggarakan pada</h2>
             </section>
 
