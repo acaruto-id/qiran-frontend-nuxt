@@ -228,7 +228,6 @@ const wishes = ref(props.data.wishes)
                     </div>
                 </section>
             </template>
-
             <section v-motion="fadeToBottom" class="px-5 px-5 pb-16 text-center font-ptserif text-3xl font-medium">
                 <h2>Acara diselenggarakan pada</h2>
             </section>
@@ -259,6 +258,7 @@ const wishes = ref(props.data.wishes)
                 </div>
                 <p v-motion="fadeToTop">{{ getDay(data.startDate) }}</p>
                 <p v-motion="fadeToTop">Pukul {{ getTime(data.startDate) }}</p>
+
             </section>
 
             <section
